@@ -47,7 +47,7 @@ namespace ZooLab
                 int availableSquare = enclosure.SquareFeet;
                 foreach (var animal in enclosure.Animals)
                 {
-                    if (animalWithoutEnclosure.isFriendlyWithAnimal(animal))
+                    if (animalWithoutEnclosure.IsFriendlyWithAnimal(animal))
                         availableSquare -= animal.RequiredSpaceSqFt;
                     else
                         availableSquare = -1;
@@ -61,6 +61,17 @@ namespace ZooLab
             }
 
             throw new NoAvailableEnclosureException();
+        }
+
+        public void FeedAnimals()
+        {
+            foreach (var enclosure in Enclosures)
+            {
+                foreach (var enclosureAnimal in enclosure.Animals)
+                {
+                    enclosureAnimal.Feed(enclosureAnimal.FavouriteFood[0]);
+                }
+            }
         }
     }
 }

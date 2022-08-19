@@ -10,15 +10,22 @@ namespace ZooLab.Animals
 
         public bool IsSick { get; }
 
-        public List<int> FeedSchedule { get; private set; }
+        public List<int> FeedSchedule { get; private set; } = new List<int>();
 
         public List<FeedTime> FeedTimes { get; }
 
-        public abstract string[] FavouriteFood { get; }
+        public abstract List<Animals> FriendlyAnimals { get; }
+
+        public abstract List<Food> FavouriteFood { get; }
+
+        public abstract List<Medicine> NeededMedicine { get; }
 
         public abstract int RequiredSpaceSqFt { get; }
 
-        public abstract bool isFriendlyWithAnimal(Animal animal);
+        public abstract bool IsFriendlyWithAnimal(Animal animal);
+
+        public abstract Animals Type { get; }
+
 
         public void Feed(Food food)
         {

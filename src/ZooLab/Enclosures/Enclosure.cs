@@ -57,7 +57,7 @@ namespace ZooLab.Enclosures
         {
             foreach (var animal in enclosure.Animals)
             {
-                if (!animalWithoutEnclosure.isFriendlyWithAnimal(animal))
+                if (!animalWithoutEnclosure.IsFriendlyWithAnimal(animal))
                 {
                     return false;
                 }

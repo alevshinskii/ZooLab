@@ -1,5 +1,7 @@
 ﻿using ZooLab.Animals;
+using ZooLab.Animals.Birds;
 using ZooLab.Animals.Mammals;
+using ZooLab.Animals.Reptiles;
 using ZooLab.Employees;
 using ZooLab.Enclosures;
 using ZooLab.Exceptions;
@@ -81,12 +83,25 @@ namespace ZooLab.Test
         }
 
         [Fact]
-        public void ShouldNotBeAbleFindAvailableEnclosureInZooWithoutEnclosures()
+        public void ShouldNotBeAbleToFindAvailableEnclosureInZooWithoutEnclosures()
         {
             Zoo zoo = _fixture.GetZoo();
             Bison bison = new();
 
             Assert.Throws<NoAvailableEnclosureException>(() => zoo.FindAvailableEnclosure(bison));
+        }
+
+        [Fact]
+        public void ShouldBeAbleToFeedAllAnimals()
+        {
+            Zoo zoo = _fixture.GetZoo();
+            var enclosure = _fixture.GetEnclosure(zoo);
+            zoo.AddEnclosure(enclosure);
+            enclosure.AddAnimal(new Parrot());
+            enclosure.AddAnimal(new Elephant());
+            enclosure.AddAnimal(new Turtle());
+            zoo.FeedAnimals();
+
         }
     }
 
