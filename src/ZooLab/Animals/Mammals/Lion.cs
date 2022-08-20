@@ -20,6 +20,7 @@ namespace ZooLab.Animals.Mammals
             return false;
         }
 
+        public Lion(){}
         public Lion(bool isSick) : base(isSick)
         {
             IsSick = isSick;

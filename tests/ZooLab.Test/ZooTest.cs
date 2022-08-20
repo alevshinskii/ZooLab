@@ -131,7 +131,7 @@ namespace ZooLab.Test
 
     }
 
-    class ZooTestFixture
+    public class ZooTestFixture
     {
         internal Zoo GetZoo()
         {
