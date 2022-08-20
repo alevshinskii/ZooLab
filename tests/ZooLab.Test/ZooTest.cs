@@ -97,12 +97,38 @@ namespace ZooLab.Test
             Zoo zoo = _fixture.GetZoo();
             var enclosure = _fixture.GetEnclosure(zoo);
             zoo.AddEnclosure(enclosure);
+            zoo.HireEmployee(_fixture.GetZooKeeperWithExperience());
+            zoo.HireEmployee(_fixture.GetVeterinarianWithExperience());
             enclosure.AddAnimal(new Parrot());
             enclosure.AddAnimal(new Elephant());
             enclosure.AddAnimal(new Turtle());
-            zoo.FeedAnimals();
 
+            zoo.FeedAnimals();
         }
+
+
+        [Fact]
+        public void ShouldBeAbleToHealAllAnimals()
+        {
+            Zoo zoo = _fixture.GetZoo();
+            var enclosure = _fixture.GetEnclosure(zoo);
+            zoo.AddEnclosure(enclosure);
+            zoo.HireEmployee(_fixture.GetZooKeeperWithExperience());
+            zoo.HireEmployee(_fixture.GetVeterinarianWithExperience());
+            enclosure.AddAnimal(new Parrot(isSick:true));
+            enclosure.AddAnimal(new Elephant(isSick:true));
+            enclosure.AddAnimal(new Turtle(isSick:true));
+
+            zoo.HealAnimals();
+
+            var animals = _fixture.GetAllAnimalsFromZoo(zoo);
+            foreach (var animal in animals)
+            {
+                Assert.False(animal.IsSick);
+            }
+        }
+
+
     }
 
     class ZooTestFixture
@@ -114,7 +140,7 @@ namespace ZooLab.Test
 
         internal List<Animal> GetAnimalsList()
         {
-            return new List<Animal> { new Bison(), new Elephant() };
+            return new List<Animal> { new Bison(), new Elephant(),new Parrot(),new Turtle() };
         }
 
         internal Enclosure GetEnclosure(Zoo zoo)
@@ -145,6 +171,19 @@ namespace ZooLab.Test
         internal Veterinarian GetZooKeeperWithExperience()
         {
             return new Veterinarian("FirstName", "LastName", GetAnimalsList());
+        }
+
+        internal List<Animal> GetAllAnimalsFromZoo(Zoo zoo)
+        {
+            var list = new List<Animal>();
+            foreach (var zooEnclosure in zoo.Enclosures)
+            {
+                foreach (var zooEnclosureAnimal in zooEnclosure.Animals)
+                {
+                    list.Add(zooEnclosureAnimal);
+                }
+            }
+            return list;
         }
     }
 }

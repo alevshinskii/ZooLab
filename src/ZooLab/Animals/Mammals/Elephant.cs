@@ -7,22 +7,19 @@ namespace ZooLab.Animals.Mammals
     {
         public override List<Animals> FriendlyAnimals =>
             new() { Animals.Elephant, Animals.Bison, Animals.Parrot, Animals.Turtle };
-
         public override List<Food> FavouriteFood => new() {new Grass()};
-        public override List<Medicine> NeededMedicine => new ();
-
         public override int RequiredSpaceSqFt => 1000;
-
         public override Animals Type => Animals.Elephant;
+        public override List<Medicine> NeededMedicine { get; set; } = new List<Medicine>();
 
-        public override bool IsFriendlyWithAnimal(Animal animal)
+        public Elephant() { }
+        public Elephant(bool isSick) : base(isSick)
         {
-            if (FriendlyAnimals.Contains(animal.Type))
+            IsSick = isSick;
+            if (IsSick)
             {
-                return true;
+                NeededMedicine.Add(new Antibiotics());
             }
-
-            return false;
         }
 
     }

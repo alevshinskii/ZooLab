@@ -8,24 +8,30 @@ namespace ZooLab.Animals
     {
         public int ID { get; }
 
-        public bool IsSick { get; }
+        public bool IsSick { get; set; }
 
-        public List<int> FeedSchedule { get; private set; } = new List<int>();
+        public List<int> FeedSchedule { get; private set; } = new() { 9, 14, 19 };
 
-        public List<FeedTime> FeedTimes { get; }
+        public List<FeedTime> FeedTimes { get; } = new();
 
-        public abstract List<Animals> FriendlyAnimals { get; }
+        public virtual List<Animals> FriendlyAnimals { get; }
 
-        public abstract List<Food> FavouriteFood { get; }
+        public virtual List<Food> FavouriteFood { get; }
 
-        public abstract List<Medicine> NeededMedicine { get; }
+        public virtual List<Medicine> NeededMedicine { get; set; }
 
-        public abstract int RequiredSpaceSqFt { get; }
+        public virtual int RequiredSpaceSqFt { get; }
 
-        public abstract bool IsFriendlyWithAnimal(Animal animal);
+        public virtual bool IsFriendlyWithAnimal(Animal animal)
+        {
+            if (FriendlyAnimals.Contains(animal.Type))
+            {
+                return true;
+            }
+            return false;
+        }
 
         public abstract Animals Type { get; }
-
 
         public void Feed(Food food)
         {
@@ -37,9 +43,10 @@ namespace ZooLab.Animals
             FeedSchedule = hours;
         }
 
-        public void Heal(Medicine medicine)
+        public virtual void Heal(Medicine medicine)
         {
-
+            IsSick = false;
+            NeededMedicine.Clear();
         }
     }
 }

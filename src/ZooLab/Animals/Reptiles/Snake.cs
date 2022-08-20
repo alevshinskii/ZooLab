@@ -7,7 +7,7 @@ namespace ZooLab.Animals.Reptiles
     {
         public override List<Animals> FriendlyAnimals => new() { Animals.Snake };
         public override List<Food> FavouriteFood => new() { new Meat() };
-        public override List<Medicine> NeededMedicine => new();
+        public override List<Medicine> NeededMedicine { get; set; } = new List<Medicine>();
         public override int RequiredSpaceSqFt => 2;
         public override Animals Type => Animals.Snake;
 
@@ -21,5 +21,13 @@ namespace ZooLab.Animals.Reptiles
             return false;
         }
 
+        public Snake(bool isSick) : base(isSick)
+        {
+            IsSick = isSick;
+            if (IsSick)
+            {
+                NeededMedicine.Add(new Antibiotics());
+            }
+        }
     }
 }

@@ -65,13 +65,48 @@ namespace ZooLab
 
         public void FeedAnimals()
         {
+            var zooKeepers = getAllZooKeepers();
+            if (zooKeepers.Count > 0)
+            {
+                int currentZookeeperIndex=0;
+                foreach (var enclosure in Enclosures)
+                {
+                    foreach (var enclosureAnimal in enclosure.Animals)
+                    {
+                        zooKeepers[currentZookeeperIndex].FeedAnimal(enclosureAnimal);
+                        currentZookeeperIndex++;
+                        if (currentZookeeperIndex >= zooKeepers.Count)
+                        {
+                            currentZookeeperIndex = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void HealAnimals()
+        {
             foreach (var enclosure in Enclosures)
             {
                 foreach (var enclosureAnimal in enclosure.Animals)
                 {
-                    enclosureAnimal.Feed(enclosureAnimal.FavouriteFood[0]);
+                    if(enclosureAnimal.IsSick && enclosureAnimal.NeededMedicine.Count>0)
+                        enclosureAnimal.Heal(enclosureAnimal.NeededMedicine[0]);
                 }
             }
+        }
+
+        private List<ZooKeeper> getAllZooKeepers()
+        {
+            var listOfZooKeepers = new List<ZooKeeper>();
+            foreach (var employee in Employees)
+            {
+                if (employee is ZooKeeper zooKeeper)
+                {
+                    listOfZooKeepers.Add(zooKeeper);
+                }
+            }
+            return listOfZooKeepers;
         }
     }
 }
