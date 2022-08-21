@@ -168,9 +168,9 @@ namespace ZooLab.Test
             return new Veterinarian("FirstName", "LastName", GetAnimalsList());
         }
 
-        internal Veterinarian GetZooKeeperWithExperience()
+        internal ZooKeeper GetZooKeeperWithExperience()
         {
-            return new Veterinarian("FirstName", "LastName", GetAnimalsList());
+            return new ZooKeeper("FirstName", "LastName", GetAnimalsList());
         }
 
         internal List<Animal> GetAllAnimalsFromZoo(Zoo zoo)

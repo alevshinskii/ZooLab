@@ -3,7 +3,7 @@ using ZooLab.Animals.Medicines;
 
 namespace ZooLab.Animals.Reptiles
 {
-    public class Snake:Reptile
+    public class Snake : Reptile
     {
         public override List<Animals> FriendlyAnimals => new() { Animals.Snake };
         public override List<Food> FavouriteFood => new() { new Meat() };
@@ -21,6 +21,7 @@ namespace ZooLab.Animals.Reptiles
             return false;
         }
 
+        public Snake() { }
         public Snake(bool isSick) : base(isSick)
         {
             IsSick = isSick;

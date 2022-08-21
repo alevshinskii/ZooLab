@@ -6,7 +6,8 @@ namespace ZooLab.Animals
 {
     public abstract class Animal
     {
-        public int ID { get; }
+        private static int _currentId = 1;
+        public int Id { get; }
 
         public bool IsSick { get; set; }
 
@@ -14,13 +15,13 @@ namespace ZooLab.Animals
 
         public List<FeedTime> FeedTimes { get; } = new();
 
-        public virtual List<Animals> FriendlyAnimals { get; }
+        public abstract List<Animals> FriendlyAnimals { get; }
 
-        public virtual List<Food> FavouriteFood { get; }
+        public abstract List<Food> FavouriteFood { get; }
 
-        public virtual List<Medicine> NeededMedicine { get; set; }
+        public abstract List<Medicine> NeededMedicine { get; set; }
 
-        public virtual int RequiredSpaceSqFt { get; }
+        public abstract int RequiredSpaceSqFt { get; }
 
         public virtual bool IsFriendlyWithAnimal(Animal animal)
         {
@@ -33,10 +34,7 @@ namespace ZooLab.Animals
 
         public abstract Animals Type { get; }
 
-        public void Feed(Food food)
-        {
-
-        }
+        public void Feed(Food food) { }
 
         public void AddFeedSchedule(List<int> hours)
         {
@@ -47,6 +45,12 @@ namespace ZooLab.Animals
         {
             IsSick = false;
             NeededMedicine.Clear();
+        }
+
+        protected Animal()
+        {
+            Id = _currentId;
+            _currentId++;
         }
     }
 }

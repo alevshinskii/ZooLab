@@ -36,6 +36,11 @@ public class ZooKeeper:IEmployee
 
     public bool FeedAnimal(Animal animal)
     {
+        if (animal.FavouriteFood.Count > 0)
+            animal.Feed(animal.FavouriteFood[0]);
+        else
+            return false;
+        animal.FeedTimes.Add(new FeedTime(DateTime.Now, this));
         return true;
     }
 }

@@ -21,7 +21,7 @@ public class ZooKeeperHireValidator : HireValidator,IHireValidator
                 {
                     if (!veterinarian.HasAnimalExperience(animal))
                     {
-                        errors.Add("Veterinarian " + veterinarian.LastName + " has no experience with animal " + animal.ID);
+                        errors.Add("Veterinarian " + veterinarian.LastName + " has no experience with animal " + animal.Id);
                     }
                 }
             }
