@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using ZooLab.Animals;
-using ZooLab.Animals.Birds;
+﻿using ZooLab.Animals.Birds;
 using ZooLab.Animals.Mammals;
 using ZooLab.Enclosures;
 
@@ -15,16 +13,16 @@ public class AnimalTest
     {
         Lion lion = new Lion();
         Parrot parrot = new Parrot();
-        Assert.NotEqual(lion.Id,parrot.Id);
+        Assert.NotEqual(lion.Id, parrot.Id);
     }
 
     [Fact]
     public void ShouldAnimalsHaveRequiredSquareFeet()
     {
         Lion lion = new Lion();
-        Assert.NotEqual(0,lion.RequiredSpaceSqFt);
+        Assert.NotEqual(0, lion.RequiredSpaceSqFt);
     }
-    
+
     [Fact]
     public void ShouldAnimalsHaveFeedTime()
     {
@@ -39,6 +37,24 @@ public class AnimalTest
         zoo.FeedAnimals();
 
         Assert.NotEmpty(parrot.FeedTimes);
-        Assert.Equal(parrot.FeedTimes[0].FeedBy,zoo.Employees[0]);
+        Assert.Equal(parrot.FeedTimes[0].FeedBy, zoo.Employees[0]);
+    }
+
+    [Fact]
+    public void ShouldNotBeAbleToFeedAnimalsMoreThan2TimesIn1Day()
+    {
+        Parrot parrot = new Parrot();
+
+        Zoo zoo = zooTestFixture.GetZoo();
+        Enclosure enclosure = zooTestFixture.GetEnclosure(zoo);
+        zoo.AddEnclosure(enclosure);
+        enclosure.AddAnimal(parrot);
+        zoo.HireEmployee(zooTestFixture.GetZooKeeperWithExperience());
+
+        zoo.FeedAnimals();
+        zoo.FeedAnimals();
+        zoo.FeedAnimals();
+
+        Assert.Equal(2, parrot.FeedTimes.Count);
     }
 }

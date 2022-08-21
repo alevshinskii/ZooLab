@@ -11,7 +11,7 @@ namespace ZooLab.Animals
 
         public bool IsSick { get; set; }
 
-        public List<int> FeedSchedule { get; private set; } = new() { 9, 14, 19 };
+        public List<int> FeedSchedule { get; private set; } = new() { 10, 18 };
 
         public List<FeedTime> FeedTimes { get; } = new();
 
