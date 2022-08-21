@@ -143,6 +143,11 @@ namespace ZooLab.Test
             return new List<Animal> { new Bison(), new Elephant(),new Parrot(),new Turtle() };
         }
 
+        internal List<ZooLab.Animals.Animals> GetAnimalsTypesList()
+        {
+            return new List<ZooLab.Animals.Animals> { ZooLab.Animals.Animals.Bison, ZooLab.Animals.Animals.Elephant,ZooLab.Animals.Animals.Parrot,ZooLab.Animals.Animals.Turtle };
+        }
+
         internal Enclosure GetEnclosure(Zoo zoo)
         {
             return new Enclosure("New enclosure", zoo, 9999);
@@ -170,7 +175,7 @@ namespace ZooLab.Test
 
         internal ZooKeeper GetZooKeeperWithExperience()
         {
-            return new ZooKeeper("FirstName", "LastName", GetAnimalsList());
+            return new ZooKeeper("FirstName", "LastName", GetAnimalsTypesList());
         }
 
         internal List<Animal> GetAllAnimalsFromZoo(Zoo zoo)
@@ -185,6 +190,8 @@ namespace ZooLab.Test
             }
             return list;
         }
+
+
     }
 }
 
