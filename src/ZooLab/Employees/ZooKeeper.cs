@@ -38,7 +38,7 @@ public class ZooKeeper : IEmployee
     {
         if (animal.FavouriteFood.Count > 0 && animal.FeedTimes.Select(feedTime=> feedTime.Time.Day==DateTime.Now.Day).Count()<animal.FeedSchedule.Count)
         {
-            if (AnimalExperiences.Contains(animal.Type))
+            if (HasAnimalExperience(animal))
             {
                 animal.Feed(animal.FavouriteFood[0]);
                 animal.FeedTimes.Add(new FeedTime(DateTime.Now, this));
