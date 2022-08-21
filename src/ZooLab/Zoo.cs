@@ -86,12 +86,24 @@ namespace ZooLab
 
         public void HealAnimals()
         {
-            foreach (var enclosure in Enclosures)
+            var veterianrians = getAllVeterinarians();
+            if (veterianrians.Count > 0)
             {
-                foreach (var enclosureAnimal in enclosure.Animals)
+                int currentVeterianrianIndex = 0;
+                foreach (var enclosure in Enclosures)
                 {
-                    if(enclosureAnimal.IsSick && enclosureAnimal.NeededMedicine.Count>0)
-                        enclosureAnimal.Heal(enclosureAnimal.NeededMedicine[0]);
+                    foreach (var enclosureAnimal in enclosure.Animals)
+                    {
+                        if (enclosureAnimal.IsSick && enclosureAnimal.NeededMedicine.Count > 0)
+                        {
+                            veterianrians[currentVeterianrianIndex].HealAnimal(enclosureAnimal);
+                            currentVeterianrianIndex++;
+                            if (currentVeterianrianIndex >= veterianrians.Count)
+                            {
+                                currentVeterianrianIndex = 0;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -107,6 +119,19 @@ namespace ZooLab
                 }
             }
             return listOfZooKeepers;
+        }
+
+        private List<Veterinarian> getAllVeterinarians()
+        {
+            var listOfVeterinarians = new List<Veterinarian>();
+            foreach (var employee in Employees)
+            {
+                if (employee is Veterinarian veterinarian)
+                {
+                    listOfVeterinarians.Add(veterinarian);
+                }
+            }
+            return listOfVeterinarians;
         }
     }
 }

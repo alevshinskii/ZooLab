@@ -37,6 +37,12 @@ public class Veterinarian:IEmployee
     }
     public bool HealAnimal(Animal animal)
     {
-        return true;
+        if (animal.IsSick && animal.NeededMedicine.Count > 0)
+        {
+            animal.IsSick = false;
+            animal.NeededMedicine.Clear();
+            return true;
+        }
+        return false;
     }
 }
