@@ -1,4 +1,5 @@
 ﻿using ZooLab.Animals.Birds;
+using ZooLab.Animals.Mammals;
 using ZooLab.Employees;
 using ZooLab.Exceptions;
 
@@ -31,5 +32,27 @@ public class VeterinarianTest
         Parrot parrot = new Parrot(isSick: true);
 
         Assert.Throws<NoNeededExperienceException>(()=>veterinarian.HealAnimal(parrot));
+    }
+
+    [Fact]
+    public void ShouldVeterinarianBeAbleToAddAnimalExperience()
+    {
+        Veterinarian veterinarian = zooTestFixture.GetVeterinarian();
+        Lion lion = new Lion(isSick: true);
+
+        Assert.Throws<NoNeededExperienceException>(()=>veterinarian.HealAnimal(lion));
+
+        veterinarian.AddAnimalExperience(lion.Type);
+
+        Assert.True(veterinarian.HealAnimal(lion));
+    }
+
+    [Fact]
+    public void ShouldVeterinarianNotHealHealthyAnimal()
+    {
+        Veterinarian veterinarian = zooTestFixture.GetVeterinarian();
+        Lion lion = new Lion(isSick: false);
+
+        Assert.False(veterinarian.HealAnimal(lion));
     }
 }

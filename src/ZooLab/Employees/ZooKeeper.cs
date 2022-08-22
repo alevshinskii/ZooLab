@@ -24,9 +24,9 @@ public class ZooKeeper : IEmployee
         AnimalExperiences = animalExperiences;
     }
 
-    public void AddAnimalExperience(Animals.Animals animal)
+    public void AddAnimalExperience(Animals.Animals animalType)
     {
-        AnimalExperiences.Add(animal);
+        AnimalExperiences.Add(animalType);
     }
 
     public bool HasAnimalExperience(Animal animal)

@@ -21,6 +21,5 @@ namespace ZooLab.Animals.Reptiles
                 NeededMedicine.Add(new Antibiotics());
             }
         }
-
     }
 }

@@ -41,7 +41,7 @@ namespace ZooLab.Animals
             FeedSchedule = hours;
         }
 
-        public virtual void Heal(Medicine medicine)
+        public void Heal(Medicine medicine)
         {
             IsSick = false;
             NeededMedicine.Clear();
