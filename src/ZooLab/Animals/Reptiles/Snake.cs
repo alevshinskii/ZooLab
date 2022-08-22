@@ -10,17 +10,7 @@ namespace ZooLab.Animals.Reptiles
         public override List<Medicine> NeededMedicine { get; set; } = new List<Medicine>();
         public override int RequiredSpaceSqFt => 2;
         public override Animals Type => Animals.Snake;
-
-        public override bool IsFriendlyWithAnimal(Animal animal)
-        {
-            if (FriendlyAnimals.Contains(animal.Type))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
+        
         public Snake() { }
         public Snake(bool isSick) : base(isSick)
         {
