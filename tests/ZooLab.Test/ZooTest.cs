@@ -117,9 +117,9 @@ namespace ZooLab.Test
             zoo.AddEnclosure(enclosure);
             zoo.HireEmployee(zooTestFixture.GetZooKeeperWithExperience());
             zoo.HireEmployee(zooTestFixture.GetVeterinarianWithExperience());
-            enclosure.AddAnimal(new Parrot(isSick:true));
-            enclosure.AddAnimal(new Elephant(isSick:true));
-            enclosure.AddAnimal(new Turtle(isSick:true));
+            enclosure.AddAnimal(new Parrot(isSick: true));
+            enclosure.AddAnimal(new Elephant(isSick: true));
+            enclosure.AddAnimal(new Turtle(isSick: true));
 
             zoo.HealAnimals();
 
@@ -147,7 +147,29 @@ namespace ZooLab.Test
                 zoo.FindAvailableEnclosure(bison).AddAnimal(bison);
             }
 
-            Assert.Equal(5,zooTestFixture.GetAllAnimalsFromZoo(zoo).Count);
+            Assert.Equal(5, zooTestFixture.GetAllAnimalsFromZoo(zoo).Count);
+        }
+
+
+        [Fact]
+        public void ShouldBeAbleToFindAvailableEnclosureWithNotFriendlyAnimals()
+        {
+            Zoo zoo = zooTestFixture.GetZoo();
+            var smallEnclosure = enclosureTestFixture.GetCustomEnclosure(1000);
+            var largeEnclosure = enclosureTestFixture.GetCustomEnclosure(4000);
+            zoo.AddEnclosure(smallEnclosure);
+            zoo.AddEnclosure(largeEnclosure);
+            zoo.HireEmployee(zooTestFixture.GetZooKeeperWithExperience());
+            zoo.HireEmployee(zooTestFixture.GetVeterinarianWithExperience());
+            Bison bison = new Bison();
+            Lion lion = new Lion();
+
+
+            zoo.FindAvailableEnclosure(bison).AddAnimal(bison);
+            zoo.FindAvailableEnclosure(lion).AddAnimal(lion);
+
+
+            Assert.Equal(2, zooTestFixture.GetAllAnimalsFromZoo(zoo).Count);
         }
     }
 
@@ -160,12 +182,12 @@ namespace ZooLab.Test
 
         internal List<Animal> GetAnimalsList()
         {
-            return new List<Animal> { new Bison(), new Elephant(),new Parrot(),new Turtle() };
+            return new List<Animal> { new Bison(), new Elephant(), new Parrot(), new Turtle() };
         }
 
         internal List<ZooLab.Animals.Animals> GetAnimalsTypesList()
         {
-            return new List<ZooLab.Animals.Animals> { ZooLab.Animals.Animals.Bison, ZooLab.Animals.Animals.Elephant,ZooLab.Animals.Animals.Parrot,ZooLab.Animals.Animals.Turtle };
+            return new List<ZooLab.Animals.Animals> { ZooLab.Animals.Animals.Bison, ZooLab.Animals.Animals.Elephant, ZooLab.Animals.Animals.Parrot, ZooLab.Animals.Animals.Turtle };
         }
 
         internal Enclosure GetEnclosure(Zoo zoo)

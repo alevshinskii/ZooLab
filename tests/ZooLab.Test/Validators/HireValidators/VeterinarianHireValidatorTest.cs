@@ -1,4 +1,5 @@
-﻿using ZooLab.Employees;
+﻿using ZooLab.Console;
+using ZooLab.Employees;
 using ZooLab.Validators.HireValidators;
 
 namespace ZooLab.Test.Validators.HireValidators;
@@ -18,6 +19,7 @@ public class VeterinarianHireValidatorTest
     {
         public string FirstName { get; set; } = "FirstName";
         public string LastName { get; set; } = "LastName";
+        public IConsole Console { get; set; } = new DefaultConsole();
     }
 
     [Fact]

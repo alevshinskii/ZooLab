@@ -52,6 +52,11 @@ namespace ZooLab.Animals
             Id = _currentId;
             _currentId++;
         }
+
+        public override string ToString()
+        {
+            return Type + " #" + Id;
+        }
     }
 }
 

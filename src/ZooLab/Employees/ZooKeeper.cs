@@ -1,4 +1,5 @@
 ﻿using ZooLab.Animals;
+using ZooLab.Console;
 using ZooLab.Exceptions;
 
 namespace ZooLab.Employees;
@@ -7,6 +8,7 @@ public class ZooKeeper : IEmployee
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public IConsole Console { get; set; } = new DefaultConsole();
 
     public List<Animals.Animals> AnimalExperiences { get; private set; }
 
@@ -42,14 +44,21 @@ public class ZooKeeper : IEmployee
             {
                 animal.Feed(animal.FavouriteFood[0]);
                 animal.FeedTimes.Add(new FeedTime(DateTime.Now, this));
+
+                Console.WriteLine( animal+ " was fed by "+ this);
+                
+                return true;
             }
             else
             {
                 throw new NoNeededExperienceException();
             }
-            
-            return true;
         }
         return false;
+    }
+
+    public override string ToString()
+    {
+        return FirstName + " " + LastName;
     }
 }

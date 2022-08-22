@@ -1,4 +1,5 @@
 ﻿using ZooLab.Animals;
+using ZooLab.Console;
 using ZooLab.Exceptions;
 
 namespace ZooLab.Enclosures
@@ -12,6 +13,8 @@ namespace ZooLab.Enclosures
         public Zoo ParentZoo { get; set; }
 
         public int SquareFeet { get; set; }
+
+        public IConsole Console { get; set; } = new DefaultConsole();
 
         public Enclosure(string name, List<Animal> animals, Zoo parentZoo, int squareFeet)
         {
@@ -37,6 +40,8 @@ namespace ZooLab.Enclosures
                 throw new NotFriendlyAnimalException();
 
             Animals.Add(animal);
+
+            Console.WriteLine("New animal "+ animal.Type + " " + animal.Id+ " added to enclosure "+ this.Name + " in zoo "+ ParentZoo.Location);
         }
     }
 
