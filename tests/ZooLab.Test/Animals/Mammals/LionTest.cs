@@ -33,7 +33,7 @@ public class LionTest
     [InlineData(ZooLab.Animals.Animals.Bison)]
     [InlineData(ZooLab.Animals.Animals.Elephant)]
     [InlineData(ZooLab.Animals.Animals.Parrot)]
-    public void ShouldNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
+    public void ShouldLionNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
     {
         Lion lion = new Lion();
 
@@ -41,7 +41,7 @@ public class LionTest
     }
 
     [Fact]
-    public void ShouldFitEnclosure()
+    public void ShouldLionFitEnclosure()
     {
         Lion lion = new Lion();
 

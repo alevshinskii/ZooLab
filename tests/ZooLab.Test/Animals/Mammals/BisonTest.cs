@@ -26,7 +26,7 @@ public class BisonTest
 
     [Theory]
     [InlineData(ZooLab.Animals.Animals.Elephant)]
-    public void ShouldBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
+    public void ShouldBisonBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
     {
         Bison bison = new Bison();
 
@@ -39,7 +39,7 @@ public class BisonTest
     [InlineData(ZooLab.Animals.Animals.Lion)]
     [InlineData(ZooLab.Animals.Animals.Turtle)]
     [InlineData(ZooLab.Animals.Animals.Parrot)]
-    public void ShouldNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
+    public void ShouldBisonNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
     {
         Bison bison = new Bison();
 
@@ -47,7 +47,7 @@ public class BisonTest
     }
 
     [Fact]
-    public void ShouldFitEnclosure()
+    public void ShouldBisonFitEnclosure()
     {
         Bison bison = new Bison();
 

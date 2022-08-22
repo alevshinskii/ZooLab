@@ -28,7 +28,7 @@ public class ElephantTest
     [InlineData(ZooLab.Animals.Animals.Turtle)]
     [InlineData(ZooLab.Animals.Animals.Bison)]
     [InlineData(ZooLab.Animals.Animals.Parrot)]
-    public void ShouldBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
+    public void ShouldElephantBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
     {
         Elephant elephant = new Elephant();
 
@@ -39,7 +39,7 @@ public class ElephantTest
     [InlineData(ZooLab.Animals.Animals.Penguin)]
     [InlineData(ZooLab.Animals.Animals.Snake)]
     [InlineData(ZooLab.Animals.Animals.Lion)]
-    public void ShouldNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
+    public void ShouldElephantNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
     {
         Elephant elephant = new Elephant();
 
@@ -47,7 +47,7 @@ public class ElephantTest
     }
 
     [Fact]
-    public void ShouldFitEnclosure()
+    public void ShouldElephantFitEnclosure()
     {
         Elephant elephant = new Elephant();
 

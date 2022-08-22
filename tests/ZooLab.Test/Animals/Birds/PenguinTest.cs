@@ -16,7 +16,7 @@ public class PenguinTest
     }
 
     [Fact]
-    public void ShouldBeFriendlyWithPenguinType()
+    public void ShouldPenguinBeFriendlyWithPenguinType()
     {
         Penguin penguin = new Penguin();
 
@@ -31,7 +31,7 @@ public class PenguinTest
     [InlineData(ZooLab.Animals.Animals.Bison)]
     [InlineData(ZooLab.Animals.Animals.Elephant)]
     [InlineData(ZooLab.Animals.Animals.Turtle)]
-    public void ShouldNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
+    public void ShouldPenguinNotBeFriendlyWithOtherAnimals(ZooLab.Animals.Animals animalType)
     {
         Penguin penguin = new Penguin();
 
@@ -39,7 +39,7 @@ public class PenguinTest
     }
 
     [Fact]
-    public void ShouldFitEnclosure()
+    public void ShouldPenguinFitEnclosure()
     {
         Penguin penguin = new Penguin();
 
