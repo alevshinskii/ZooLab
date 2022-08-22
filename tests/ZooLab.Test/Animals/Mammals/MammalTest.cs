@@ -5,11 +5,7 @@ namespace ZooLab.Test.Animals.Mammals;
 public class MammalTest
 {
     
-    [Fact]
-    public void ShouldBeAbleToCreateLion()
-    {
-        Lion lion = new Lion();
-    }
+
     [Fact]
     public void ShouldBeAbleToCreateBison()
     {
