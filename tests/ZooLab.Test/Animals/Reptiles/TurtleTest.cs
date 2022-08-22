@@ -65,7 +65,7 @@ public class TurtleTest
     {
         Turtle turtle = new Turtle();
 
-        Enclosure enclosure = enclosureTestFixture.GetSmallEnclosure(squareFeet: 5);
+        Enclosure enclosure = enclosureTestFixture.GetCustomEnclosure(squareFeet: 5);
 
         enclosure.AddAnimal(turtle);
 

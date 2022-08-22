@@ -25,7 +25,7 @@ public class EnclosureTest
     [Fact]
     public void ShouldNotBeAbleToAddAnimalInEnclosureWithoutEnoughSpace()
     {
-        Enclosure enclosure = enclosureFixture.GetSmallEnclosure(1000);
+        Enclosure enclosure = enclosureFixture.GetCustomEnclosure(1000);
         enclosure.AddAnimal(new Elephant());
         Assert.Throws<NoAvailableSpaceException>(() => enclosure.AddAnimal(new Elephant()));
     }
@@ -47,7 +47,7 @@ public class EnclosureTestFixture
         return new Enclosure("New Enclosure", zooFixture.GetZoo(), 9999);
     }
 
-    public Enclosure GetSmallEnclosure(int squareFeet)
+    public Enclosure GetCustomEnclosure(int squareFeet)
     {
         return new Enclosure("New Enclosure", zooFixture.GetZoo(), squareFeet);
     }

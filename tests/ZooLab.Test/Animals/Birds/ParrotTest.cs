@@ -64,7 +64,7 @@ public class ParrotTest
     {
         Parrot parrot = new Parrot();
 
-        Enclosure enclosure = enclosureTestFixture.GetSmallEnclosure(squareFeet: 5);
+        Enclosure enclosure = enclosureTestFixture.GetCustomEnclosure(squareFeet: 5);
 
         enclosure.AddAnimal(parrot);
 

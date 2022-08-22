@@ -5,78 +5,80 @@ using ZooLab.Animals.Reptiles;
 using ZooLab.Employees;
 using ZooLab.Enclosures;
 using ZooLab.Exceptions;
+using ZooLab.Test.Enclosures;
 
 namespace ZooLab.Test
 {
     public class ZooTest
     {
-        private ZooTestFixture _fixture = new();
+        private ZooTestFixture zooTestFixture = new();
+        private EnclosureTestFixture enclosureTestFixture = new();
 
         [Fact]
         public void ShouldBeAbleToCreateZoo()
         {
-            Zoo zoo = _fixture.GetZoo();
+            Zoo zoo = zooTestFixture.GetZoo();
         }
 
         [Fact]
         public void ShouldBeAbleToAddEnclosureInZoo()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.AddEnclosure(_fixture.GetEnclosure(zoo));
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.AddEnclosure(zooTestFixture.GetEnclosure(zoo));
         }
 
         [Fact]
         public void ShouldBeAbleToHireZookeeperInZoo()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.HireEmployee(_fixture.GetZooKeeper());
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.HireEmployee(zooTestFixture.GetZooKeeper());
         }
 
         [Fact]
         public void ShouldBeAbleToHireVeterinarianInZoo()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.HireEmployee(_fixture.GetVeterinarian());
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.HireEmployee(zooTestFixture.GetVeterinarian());
         }
 
         [Fact]
         public void ShouldBeAbleToHireVeterinarianInZooWithAnimals()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.AddEnclosure(_fixture.GetEnclosureWithAnimals(zoo));
-            zoo.HireEmployee(_fixture.GetVeterinarianWithExperience());
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.AddEnclosure(zooTestFixture.GetEnclosureWithAnimals(zoo));
+            zoo.HireEmployee(zooTestFixture.GetVeterinarianWithExperience());
         }
 
         [Fact]
         public void ShouldNotBeAbleToHireVeterinarianWithoutExperienceInZooWithAnimals()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.AddEnclosure(_fixture.GetEnclosureWithAnimals(zoo));
-            Assert.Throws<NoNeededExperienceException>(() => zoo.HireEmployee(_fixture.GetVeterinarian()));
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.AddEnclosure(zooTestFixture.GetEnclosureWithAnimals(zoo));
+            Assert.Throws<NoNeededExperienceException>(() => zoo.HireEmployee(zooTestFixture.GetVeterinarian()));
         }
 
         [Fact]
         public void ShouldBeAbleToHireZooKeeperInZooWithAnimals()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.AddEnclosure(_fixture.GetEnclosureWithAnimals(zoo));
-            zoo.HireEmployee(_fixture.GetZooKeeperWithExperience());
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.AddEnclosure(zooTestFixture.GetEnclosureWithAnimals(zoo));
+            zoo.HireEmployee(zooTestFixture.GetZooKeeperWithExperience());
         }
 
         [Fact]
         public void ShouldNotBeAbleToHireZooKeeperWithoutExperienceInZooWithAnimals()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.AddEnclosure(_fixture.GetEnclosureWithAnimals(zoo));
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.AddEnclosure(zooTestFixture.GetEnclosureWithAnimals(zoo));
 
-            Assert.Throws<NoNeededExperienceException>(() => zoo.HireEmployee(_fixture.GetZooKeeper()));
+            Assert.Throws<NoNeededExperienceException>(() => zoo.HireEmployee(zooTestFixture.GetZooKeeper()));
         }
 
         [Fact]
         public void ShouldBeAbleToAddAnimalInZoo()
         {
-            Zoo zoo = _fixture.GetZoo();
-            zoo.AddEnclosure(_fixture.GetEnclosure(zoo));
+            Zoo zoo = zooTestFixture.GetZoo();
+            zoo.AddEnclosure(zooTestFixture.GetEnclosure(zoo));
             Bison bison = new();
             Enclosure enclosure = zoo.FindAvailableEnclosure(bison);
             enclosure.AddAnimal(bison);
@@ -85,7 +87,7 @@ namespace ZooLab.Test
         [Fact]
         public void ShouldNotBeAbleToFindAvailableEnclosureInZooWithoutEnclosures()
         {
-            Zoo zoo = _fixture.GetZoo();
+            Zoo zoo = zooTestFixture.GetZoo();
             Bison bison = new();
 
             Assert.Throws<NoAvailableEnclosureException>(() => zoo.FindAvailableEnclosure(bison));
@@ -94,11 +96,11 @@ namespace ZooLab.Test
         [Fact]
         public void ShouldBeAbleToFeedAllAnimals()
         {
-            Zoo zoo = _fixture.GetZoo();
-            var enclosure = _fixture.GetEnclosure(zoo);
+            Zoo zoo = zooTestFixture.GetZoo();
+            var enclosure = zooTestFixture.GetEnclosure(zoo);
             zoo.AddEnclosure(enclosure);
-            zoo.HireEmployee(_fixture.GetZooKeeperWithExperience());
-            zoo.HireEmployee(_fixture.GetVeterinarianWithExperience());
+            zoo.HireEmployee(zooTestFixture.GetZooKeeperWithExperience());
+            zoo.HireEmployee(zooTestFixture.GetVeterinarianWithExperience());
             enclosure.AddAnimal(new Parrot());
             enclosure.AddAnimal(new Elephant());
             enclosure.AddAnimal(new Turtle());
@@ -110,25 +112,43 @@ namespace ZooLab.Test
         [Fact]
         public void ShouldBeAbleToHealAllAnimals()
         {
-            Zoo zoo = _fixture.GetZoo();
-            var enclosure = _fixture.GetEnclosure(zoo);
+            Zoo zoo = zooTestFixture.GetZoo();
+            var enclosure = zooTestFixture.GetEnclosure(zoo);
             zoo.AddEnclosure(enclosure);
-            zoo.HireEmployee(_fixture.GetZooKeeperWithExperience());
-            zoo.HireEmployee(_fixture.GetVeterinarianWithExperience());
+            zoo.HireEmployee(zooTestFixture.GetZooKeeperWithExperience());
+            zoo.HireEmployee(zooTestFixture.GetVeterinarianWithExperience());
             enclosure.AddAnimal(new Parrot(isSick:true));
             enclosure.AddAnimal(new Elephant(isSick:true));
             enclosure.AddAnimal(new Turtle(isSick:true));
 
             zoo.HealAnimals();
 
-            var animals = _fixture.GetAllAnimalsFromZoo(zoo);
+            var animals = zooTestFixture.GetAllAnimalsFromZoo(zoo);
             foreach (var animal in animals)
             {
                 Assert.False(animal.IsSick);
             }
         }
 
+        [Fact]
+        public void ShouldBeAbleToFindAvailableEnclosure()
+        {
+            Zoo zoo = zooTestFixture.GetZoo();
+            var smallEnclosure = enclosureTestFixture.GetCustomEnclosure(1000);
+            var largeEnclosure = enclosureTestFixture.GetCustomEnclosure(4000);
+            zoo.AddEnclosure(smallEnclosure);
+            zoo.AddEnclosure(largeEnclosure);
+            zoo.HireEmployee(zooTestFixture.GetZooKeeperWithExperience());
+            zoo.HireEmployee(zooTestFixture.GetVeterinarianWithExperience());
+            Bison bison = new Bison();
 
+            for (int i = 0; i < 5; i++)
+            {
+                zoo.FindAvailableEnclosure(bison).AddAnimal(bison);
+            }
+
+            Assert.Equal(5,zooTestFixture.GetAllAnimalsFromZoo(zoo).Count);
+        }
     }
 
     public class ZooTestFixture

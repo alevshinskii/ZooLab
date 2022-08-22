@@ -56,7 +56,7 @@ public class PenguinTest
     {
         Penguin penguin = new Penguin();
 
-        Enclosure enclosure = enclosureTestFixture.GetSmallEnclosure(squareFeet: 10);
+        Enclosure enclosure = enclosureTestFixture.GetCustomEnclosure(squareFeet: 10);
 
         enclosure.AddAnimal(penguin);
 

@@ -58,7 +58,7 @@ public class LionTest
     {
         Lion lion = new Lion();
 
-        Enclosure enclosure = enclosureTestFixture.GetSmallEnclosure(squareFeet: 1000);
+        Enclosure enclosure = enclosureTestFixture.GetCustomEnclosure(squareFeet: 1000);
 
         enclosure.AddAnimal(lion);
 

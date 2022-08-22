@@ -58,7 +58,7 @@ public class SnakeTest
     {
         Snake snake = new Snake();
 
-        Enclosure enclosure = enclosureTestFixture.GetSmallEnclosure(squareFeet: 2);
+        Enclosure enclosure = enclosureTestFixture.GetCustomEnclosure(squareFeet: 2);
 
         enclosure.AddAnimal(snake);
 
