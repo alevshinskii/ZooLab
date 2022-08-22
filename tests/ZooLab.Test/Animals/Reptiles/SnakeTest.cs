@@ -18,6 +18,19 @@ public class SnakeTest
     }
 
     [Fact]
+    public void ShouldBeAbleToCreateSickSnake()
+    {
+        Snake snake = new Snake(isSick: true);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToFeedSnake()
+    {
+        Snake snake = new Snake();
+        snake.Feed(snake.FavouriteFood[0]);
+    }
+
+    [Fact]
     public void ShouldBeFriendlyWithSnakeType()
     {
         Snake snake = new Snake();

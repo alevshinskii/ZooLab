@@ -16,6 +16,19 @@ public class ParrotTest
     }
 
     [Fact]
+    public void ShouldBeAbleToCreateSickParrot()
+    {
+        Parrot parrot = new Parrot(isSick: true);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToFeedParrot()
+    {
+        Parrot parrot = new Parrot();
+        parrot.Feed(parrot.FavouriteFood[0]);
+    }
+
+    [Fact]
     public void ShouldBeFriendlyWithParrotType()
     {
         Parrot parrot = new Parrot();

@@ -17,6 +17,19 @@ public class TurtleTest
     }
 
     [Fact]
+    public void ShouldBeAbleToCreateSickTurtle()
+    {
+        Turtle turtle = new Turtle(isSick: true);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToFeedTurtle()
+    {
+        Turtle turtle = new Turtle();
+        turtle.Feed(turtle.FavouriteFood[0]);
+    }
+
+    [Fact]
     public void ShouldBeFriendlyWithTurtleType()
     {
         Turtle turtle = new Turtle();

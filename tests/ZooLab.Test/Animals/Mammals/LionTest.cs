@@ -18,6 +18,19 @@ public class LionTest
     }
 
     [Fact]
+    public void ShouldBeAbleToCreateSickLion()
+    {
+        Lion lion = new Lion(isSick: true);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToFeedLion()
+    {
+        Lion lion = new Lion();
+        lion.Feed(lion.FavouriteFood[0]);
+    }
+
+    [Fact]
     public void ShouldBeFriendlyWithLionType()
     {
         Lion lion = new Lion();

@@ -16,6 +16,19 @@ public class ElephantTest
     }
 
     [Fact]
+    public void ShouldBeAbleToCreateSickElephant()
+    {
+        Elephant elephant = new Elephant(isSick: true);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToFeedElephant()
+    {
+        Elephant elephant = new Elephant();
+        elephant.Feed(elephant.FavouriteFood[0]);
+    }
+
+    [Fact]
     public void ShouldBeFriendlyWithElephantType()
     {
         Elephant elephant = new Elephant();

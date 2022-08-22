@@ -16,6 +16,19 @@ public class PenguinTest
     }
 
     [Fact]
+    public void ShouldBeAbleToCreateSickPenguin()
+    {
+        Penguin penguin = new Penguin(isSick: true);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToFeedPenguin()
+    {
+        Penguin penguin = new Penguin();
+        penguin.Feed(penguin.FavouriteFood[0]);
+    }
+
+    [Fact]
     public void ShouldPenguinBeFriendlyWithPenguinType()
     {
         Penguin penguin = new Penguin();

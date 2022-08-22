@@ -16,6 +16,19 @@ public class BisonTest
     }
 
     [Fact]
+    public void ShouldBeAbleToCreateSickBison()
+    {
+        Bison bison = new Bison(isSick: true);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToFeedBison()
+    {
+        Bison bison = new Bison();
+        bison.Feed(bison.FavouriteFood[0]);
+    }
+
+    [Fact]
     public void ShouldBeFriendlyWithBisonType()
     {
         Bison bison = new Bison();
