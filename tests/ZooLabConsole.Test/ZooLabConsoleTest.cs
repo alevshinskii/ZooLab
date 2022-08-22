@@ -86,10 +86,6 @@ namespace ZooLabConsole.Test
                 "Snake #13 was healed by Veterinarian #6",
                 "Penguin #14 was healed by Veterinarian #5",
             };
-            foreach (var line in expectedOutput)
-            {
-                Assert.Contains(line, consoleMock.Output);
-            }
             Assert.Equal(expectedOutput.Count,consoleMock.Output.Count);
         }
     }
