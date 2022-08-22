@@ -57,4 +57,24 @@ public class AnimalTest
 
         Assert.Equal(2, parrot.FeedTimes.Count);
     }
+
+    [Fact]
+    public void ShouldBeAbleToAddFeedSchedule()
+    {
+        Parrot parrot = new Parrot();
+        var feedSchedule = new List<int>() { 8, 14, 19 };
+
+        parrot.AddFeedSchedule(feedSchedule);
+
+        Assert.Equal(feedSchedule, parrot.FeedSchedule);
+    }
+
+    [Fact]
+    public void ShouldBeAbleToCheckIfAnimalIsNotFriendly()
+    {
+        Parrot parrot = new Parrot();
+        Lion lion = new Lion();
+
+        Assert.False(parrot.IsFriendlyWithAnimal(lion));
+    }
 }
