@@ -18,7 +18,7 @@ public class HireValidatorProvider
             case Veterinarian:
                 return new VeterinarianHireValidator(_zoo);
             default:
-                throw new ArgumentException("Undefined employee detected");
+                throw new ArgumentException("Undefined employee detected " + employee.GetType());
         }
     }
 }

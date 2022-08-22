@@ -105,7 +105,18 @@ namespace ZooLab.Test
             enclosure.AddAnimal(new Elephant());
             enclosure.AddAnimal(new Turtle());
 
+            var animals = zooTestFixture.GetAllAnimalsFromZoo(zoo);
+            foreach (var animal in animals)
+            {
+                Assert.Empty(animal.FeedTimes);
+            }
+
             zoo.FeedAnimals();
+
+            foreach (var animal in animals)
+            {
+                Assert.NotEmpty(animal.FeedTimes);
+            }
         }
 
 

@@ -1,3 +1,4 @@
+using FluentAssertions;
 using ZooLab.Console;
 using ZooLab.Test;
 
@@ -84,9 +85,9 @@ namespace ZooLabConsole.Test
                 "Bison #9 was healed by Veterinarian #6",
                 "Lion #11 was healed by Veterinarian #5",
                 "Snake #13 was healed by Veterinarian #6",
-                "Penguin #14 was healed by Veterinarian #5",
+                "Penguin #14 was healed by Veterinarian #5"
             };
-            Assert.Equal(expectedOutput.Count,consoleMock.Output.Count);
+            expectedOutput.Should().BeEquivalentTo(consoleMock.Output);
         }
     }
 }
